@@ -33,8 +33,12 @@ class LoginViewModel @Inject constructor(
                 ).await()
 
                 if (result.isError) {
-
+                    _loginEvent.emit(LogInEvent.ErrorLogIn(result.error().message ?: "Unknown error"))
+                    return@launch
                 }
+                _loginEvent.emit(LogInEvent.Success)
+            } else {
+                _loginEvent.emit(LogInEvent.ErrorInputTooShort)
             }
         }
     }
