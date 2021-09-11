@@ -21,7 +21,7 @@ class LoginViewModel @Inject constructor(
     val loginEvent = _loginEvent.asSharedFlow() // immutable variable for the viewModel
 
     private fun isValidUsername(username: String) =
-        username.length > Constants.MIN_USERNAME_LENGTH
+        username.length >= Constants.MIN_USERNAME_LENGTH
 
     fun connectUser(username: String) {
         val trimmedUsername = username.trim()
